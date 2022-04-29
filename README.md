@@ -1,8 +1,8 @@
 # pptools
 
 This is a collection of tools to help to check the ebooks produced by
-[Distributed Proofreader](pgdp.net), before they are submitted to
-[Project Gutenberg](gutenberg.org).
+[Distributed Proofreaders](https://pgdp.net), before they are submitted to
+[Project Gutenberg](https://gutenberg.org).
 
 The frontend for the tools is a web service that can be run locally on
 a Linux system, or online.
