@@ -28,7 +28,8 @@ import shutil
 
 import sys
 sys.path.append("../pptools")
-from comp_pp import diff_css, CompPP, html_usage, DEFAULT_TRANSFORM_CSS
+# from comp_pp import diff_css, CompPP, html_usage, DEFAULT_TRANSFORM_CSS
+from ppcomp import DIFF_CSS, PPComp, html_usage, DEFAULT_TRANSFORM_CSS
 
 import kppvh
 import find_langs
@@ -280,7 +281,7 @@ def diffs(project_id):
     f2 = os.path.basename(f2)
 
     # Do diff
-    x = CompPP(args)
+    x = PPComp(args)
     try:
         err_message, html_content, _, _ = x.do_process()
     except Exception as e:
@@ -294,7 +295,7 @@ def diffs(project_id):
                            err_message=err_message,
                            diff=html_content,
                            usage=html_usage(f1, f2),
-                           css=diff_css(),
+                           css=DIFF_CSS,
                            form=form)
 
 
