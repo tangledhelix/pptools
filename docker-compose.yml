@@ -1,0 +1,9 @@
+
+services:
+  pptools:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: pptools
+    ports:
+      - 8002:5000
