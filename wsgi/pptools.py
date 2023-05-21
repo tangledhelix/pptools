@@ -275,7 +275,8 @@ def diffs(project_id):
     args.downgrade_smart_quotes = form.downgrade_smart_quotes.data
 
     # Default value - not in form yet
-    args.css_bold = None
+    # args.css_bold = None
+    args.css_bold = "="
 
     f1 = os.path.basename(f1)
     f2 = os.path.basename(f2)
@@ -283,7 +284,7 @@ def diffs(project_id):
     # Do diff
     x = PPComp(args)
     try:
-        err_message, html_content, _, _ = x.do_process()
+        err_message, html_content, _ = x.do_process()
     except Exception as e:
         err_message = "<div class='error-border bbox'><p>Error(s) in one of the document:</p><p>{0}</p></div>".format(e)
         html_content = ""
