@@ -30,6 +30,7 @@ RUN python setup.py install --record install.txt
 
 WORKDIR /app/wsgi
 RUN mkdir -p projects temp/uploads
+RUN chown -R appuser /app
 
 USER appuser
 
