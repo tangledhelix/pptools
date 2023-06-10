@@ -7,3 +7,8 @@ services:
     image: pptools
     ports:
       - 8002:5000
+    volumes:
+      - projects:/app/wsgi/projects
+
+volumes:
+  projects:
