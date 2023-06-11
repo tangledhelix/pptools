@@ -196,6 +196,7 @@ class DiffForm(Form):
     extract_footnotes = BooleanField('Extract and process footnotes separately')
     ignore_0_space = BooleanField('Suppress zero width space (U+200B)')
     suppress_nbsp_num = BooleanField("Suppress non-breakable spaces (U+00A0) between numbers")
+    suppress_word_join = BooleanField("Suppress word join (NoBreak) (U+2060)")
     regroup_split_words = BooleanField("In Px/Fx versions, regroup split wo-* *rds")
     downgrade_smart_quotes = BooleanField("Downgrade smart quotes if needed")
 
@@ -267,6 +268,7 @@ def diffs(project_id):
     args.ignore_case = form.ignore_case.data
     args.ignore_0_space = form.ignore_0_space.data
     args.suppress_nbsp_num = form.suppress_nbsp_num.data
+    args.suppress_word_join = form.suppress_word_join.data
     args.regroup_split_words = form.regroup_split_words.data
     args.css_greek_title_plus = form.css_greek_title_plus.data
     args.css_add_illustration = form.css_add_illustration.data
