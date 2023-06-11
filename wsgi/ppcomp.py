@@ -48,7 +48,7 @@ DEFAULT_TRANSFORM_CSS = '''
 
   /* Add spaces around td tags */
   td::before, td::after { content: " "; }
-  
+
   /* Remove thought breaks */
   .tb { display: none; }
 
