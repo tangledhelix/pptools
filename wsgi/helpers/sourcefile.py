@@ -45,7 +45,7 @@ class SourceFile(object):
     """
 
     def load_file(self, fname, encoding=None):
-        """Load a file (text ot html) and finds its encoding.
+        """Load a file (text or html) and finds its encoding.
         """
 
         # Keep the full name, the file name and its path
