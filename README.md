@@ -26,6 +26,9 @@ they can be installed through pip:
 >  sudo pip3 install cssselect
 >  sudo pip3 install flask-wtf
 >  sudo pip3 install tinycss
+>  sudo pip3 install lxml
+>  sudo pip3 install roman
+>  sudo pip3 install html5lib
 
 To run the application, cd into wsgi, and run:
 
