@@ -28,7 +28,8 @@ import shutil
 
 import sys
 sys.path.append("../pptools")
-from comp_pp import diff_css, CompPP, html_usage, DEFAULT_TRANSFORM_CSS
+# from comp_pp import diff_css, CompPP, html_usage, DEFAULT_TRANSFORM_CSS
+from ppcomp import DIFF_CSS, PPComp, html_usage, DEFAULT_TRANSFORM_CSS
 
 import kppvh
 import find_langs
@@ -195,6 +196,7 @@ class DiffForm(Form):
     extract_footnotes = BooleanField('Extract and process footnotes separately')
     ignore_0_space = BooleanField('Suppress zero width space (U+200B)')
     suppress_nbsp_num = BooleanField("Suppress non-breakable spaces (U+00A0) between numbers")
+    suppress_word_join = BooleanField("Suppress word join (NoBreak) (U+2060)")
     regroup_split_words = BooleanField("In Px/Fx versions, regroup split wo-* *rds")
     downgrade_smart_quotes = BooleanField("Downgrade smart quotes if needed")
 
@@ -266,6 +268,7 @@ def diffs(project_id):
     args.ignore_case = form.ignore_case.data
     args.ignore_0_space = form.ignore_0_space.data
     args.suppress_nbsp_num = form.suppress_nbsp_num.data
+    args.suppress_word_join = form.suppress_word_join.data
     args.regroup_split_words = form.regroup_split_words.data
     args.css_greek_title_plus = form.css_greek_title_plus.data
     args.css_add_illustration = form.css_add_illustration.data
@@ -274,15 +277,16 @@ def diffs(project_id):
     args.downgrade_smart_quotes = form.downgrade_smart_quotes.data
 
     # Default value - not in form yet
-    args.css_bold = None
+    # args.css_bold = None
+    args.css_bold = "="
 
     f1 = os.path.basename(f1)
     f2 = os.path.basename(f2)
 
     # Do diff
-    x = CompPP(args)
+    x = PPComp(args)
     try:
-        err_message, html_content, _, _ = x.do_process()
+        err_message, html_content, _ = x.do_process()
     except Exception as e:
         err_message = "<div class='error-border bbox'><p>Error(s) in one of the document:</p><p>{0}</p></div>".format(e)
         html_content = ""
@@ -294,7 +298,7 @@ def diffs(project_id):
                            err_message=err_message,
                            diff=html_content,
                            usage=html_usage(f1, f2),
-                           css=diff_css(),
+                           css=DIFF_CSS,
                            form=form)
 
 
